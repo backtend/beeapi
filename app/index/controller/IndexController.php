@@ -79,8 +79,8 @@ class IndexController extends BaseController
         $info['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'] ?? '-';
         $info['PHP_DATETIME'] = date('Y-m-d H:i:s');
         $info['PHP_TIMEZONE'] = date_default_timezone_get();
-        //$info['MYSQL_DATETIME'] = current(current(\think\facade\Db::query('SELECT NOW();')));
-        //$info['MYSQL_TIMEZONE'] = implode('/', array_column(\think\facade\Db::query('show variables LIKE "%time_zone%";'), 'Value'));
+        $info['MYSQL_DATETIME'] = current(current(\think\facade\Db::query('SELECT NOW();')));
+        $info['MYSQL_TIMEZONE'] = implode('/', array_column(\think\facade\Db::query('show variables LIKE "%time_zone%";'), 'Value'));
 
         //记入缓存
         \think\facade\Cache::store('file')->set('probing', $info, 3);
